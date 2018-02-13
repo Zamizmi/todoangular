@@ -1,0 +1,22 @@
+<h2> Barks found from the Underworld </h2>
+<ul class="barks">
+  <li *ngFor="let bark of barks"
+    [class.selected]="bark === selectedBark"
+    (click)="onSelect(bark)">
+    <span class="badge">{{bark.id}}</span> {{bark.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedBark">
+
+  <h2>{{ selectedBark.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedBark.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedBark.name" placeholder="name">
+    </label>
+    <div><span>Status: </span>{{bark.completed}}</div>
+    <div><span>Created: </span>{{bark.created_at}}</div>
+  </div>
+
+</div>
