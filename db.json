@@ -1,0 +1,22 @@
+{
+  "barks": [
+    {
+      "id": 1,
+      "name": "Tame the Minotaurus",
+      "completed": "false",
+      "created_at": "01-01-2001"
+    },
+    {
+      "id": 2,
+      "name": "Glimb the Olympos",
+      "completed": "true",
+      "created_at": "01-01-2001"
+    },
+    {
+      "id": 3,
+      "name": "Beat Jesus in arm wrestling",
+      "completed": "true",
+      "created_at": "01-01-2001"
+    }
+  ]
+}
