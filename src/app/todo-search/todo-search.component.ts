@@ -1,3 +1,7 @@
+//NOT IN USE AT THE MOMENT
+//TODO MAKE A LOGGER / MESSAGE GIVER TO ADMIN -> REQUIRES ADMIN TO BE ACTUALLY USEFUL
+
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
@@ -19,7 +23,6 @@ export class TodoSearchComponent implements OnInit {
 
   constructor(private todoService: TodoService) {}
 
-  // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
   }

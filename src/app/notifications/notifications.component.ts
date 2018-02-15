@@ -1,3 +1,6 @@
+//NOT IN USE AT THE MOMENT
+//TODO MAKE A LOGGER / MESSAGE GIVER TO ADMIN -> REQUIRES ADMIN TO BE ACTUALLY USEFUL
+
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../notification.service';
 
