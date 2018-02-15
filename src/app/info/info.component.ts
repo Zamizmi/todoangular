@@ -30,7 +30,6 @@ export class InfoComponent implements OnInit {
   });
   }
 
-
   onSelect(todo: Todo): void {
     this.selectedTodo = todo;
   }
