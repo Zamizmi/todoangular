@@ -6,7 +6,7 @@ To Run
 - git clone the repo
 - nvm use 8.9.4
 - npm install
-open another terminal for the json server
+- open another terminal for the json server
 - json-server --watch db.json
 - npm start
 
