@@ -1,22 +1,25 @@
 {
-  "barks": [
+  "todos": [
     {
-      "id": 1,
-      "name": "Tame the Minotaurus",
-      "completed": "false",
-      "created_at": "01-01-2001"
+      "name": "Siisti X poist todosta",
+      "completed": false,
+      "created_at": "2018-02-15T18:39:57.519Z",
+      "votes": 2,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Glimb the Olympos",
-      "completed": "true",
-      "created_at": "01-01-2001"
+      "name": "poista search",
+      "completed": false,
+      "created_at": "2018-02-15T18:40:37.892Z",
+      "votes": 3,
+      "id": 3
     },
     {
-      "id": 3,
-      "name": "Beat Jesus in arm wrestling",
-      "completed": "true",
-      "created_at": "01-01-2001"
+      "name": "kapitalisoi uusi todo",
+      "completed": false,
+      "created_at": "2018-02-15T18:40:52.991Z",
+      "votes": 1,
+      "id": 4
     }
   ]
 }

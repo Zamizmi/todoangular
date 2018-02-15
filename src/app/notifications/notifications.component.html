@@ -1,0 +1,12 @@
+<div *ngIf="notificationService.notifications.length">
+
+  <h2>Messages</h2>
+  <button mat-button
+          (click)="notificationService.clear()">Clear</button>
+  <mat-list role="list" *ngFor="let notification of notificationService.notifications">
+    <mat-list-item role="listitem" *ngFor='let notification of notificationService.notifications'>
+      {{ notification }}
+    </mat-list-item>
+  </mat-list>
+
+</div>

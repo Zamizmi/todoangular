@@ -1,6 +1,10 @@
-<div style="text-align:center">
+<div class="mat-app-background" style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}
   </h1>
-  <app-barks></app-barks>
+  <mat-toolbar #menu="matToolbar">
+    <button mat-button color="secondary" routerLink="/info">Info</button>
+    <button mat-button color="secondary" routerLink="/todos">Todos</button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
 </div>
