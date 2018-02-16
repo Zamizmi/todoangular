@@ -1,7 +1,6 @@
 <h2> Todos found from the Database</h2>
 <i class="material-icons">close</i>
-
-<div appBolder>
+<div>
   <mat-form-field>
     <input matInput #todoName placeholder="Name">
   </mat-form-field>
@@ -10,7 +9,15 @@
     Add Todo
   </button>
 </div>
-
+<div>
+    <app-todo-detail [dataSource]="dataSource"
+    (upVoteListen)="upVote($event)"
+    (downVoteListen)="downVote($event)"
+    (changeCompletedListen)="changeCompleted($event)"
+    (deleteListen)="delete($event)">
+    </app-todo-detail>
+</div>
+<!--
 <div class="todo-table">
   <div class="example-header">
     <mat-form-field>
@@ -18,7 +25,8 @@
     </mat-form-field>
   </div>
 
-  <mat-table #table [dataSource]="dataSource">
+
+  <mat-table #table [dataSource]="todos">
 
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
@@ -27,7 +35,7 @@
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let todo"> <button mat-button color="secondary" routerLink="/detail/{{todo.id}}"> {{todo.name}}</button>
+      <mat-cell *matCellDef="let todo"> <button mat-button color="primary"> {{todo.name}} </button>
       </mat-cell>
     </ng-container>
 
@@ -59,7 +67,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-</div>
-
-<!--<app-notifications></app-notifications>
-<app-todo-search></app-todo-search>-->
+-->

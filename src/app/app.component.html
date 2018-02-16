@@ -2,9 +2,6 @@
   <h1>
     {{ title }}
   </h1>
-  <mat-toolbar #menu="matToolbar">
-    <button mat-button color="secondary" routerLink="/info">Info</button>
-    <button mat-button color="secondary" routerLink="/todos">Todos</button>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
+
+  <app-todos></app-todos>
 </div>

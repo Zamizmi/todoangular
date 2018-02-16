@@ -3,10 +3,9 @@ import {MatButtonModule, MatCheckboxModule,MatToolbarModule, MatMenuModule, MatL
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule, DataSource} from '@angular/cdk/table';
 
-
-
 @NgModule({
   imports: [BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatListModule, MatTableModule, MatFormFieldModule, MatInputModule],
   exports: [BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatListModule, MatTableModule, MatFormFieldModule, MatInputModule],
 })
-export class MyOwnCustomMaterialModule { }
+
+export class MaterialModule {}

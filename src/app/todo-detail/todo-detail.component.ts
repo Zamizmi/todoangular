@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Todo } from '../todo';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import {MatTableDataSource} from '@angular/material';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Todo } from '../todo.model';
+import {MaterialModule} from '../shared/MaterialModule';
+import { MatTableDataSource } from '@angular/material';
 
-import { TodoService }  from '../todo.service';
+//import { TodoService }  from '../todo.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -12,63 +11,37 @@ import { TodoService }  from '../todo.service';
   styleUrls: ['./todo-detail.component.css']
 })
 
-export class TodoDetailComponent implements OnInit {
-  @Input() todo: Todo;
-  dataSource : MatTableDataSource<Todo>;
-  displayedColumns = ['name', 'completed','createdAt', 'votes', 'actions'];
+export class TodoDetailComponent {
+  @Input() dataSource: MatTableDataSource<Todo>;
+  @Output() deleteListen: EventEmitter<any> = new EventEmitter();
+  @Output() upVoteListen: EventEmitter<any> = new EventEmitter();
+  @Output() downVoteListen: EventEmitter<any> = new EventEmitter();
+  @Output() changeCompletedListen: EventEmitter<any> = new EventEmitter();
+  displayedColumns = ['name', 'completed', 'votes','created_at','actions'];
 
-  constructor(
-    private route: ActivatedRoute,
-    private todoService: TodoService,
-    private location: Location
-  ) {}
 
-  updateSource(): void {
-    let todos = [];
-    todos.push(this.todo);
-    this.dataSource = new MatTableDataSource<Todo>(todos);
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
-  getTodo(): void {
-  const id = +this.route.snapshot.paramMap.get('id');
-    this.todoService.getTodo(id)
-    .subscribe(todo => {
-      this.todo = todo;
-      this.updateSource();
-    });
-  }
+  constructor() {}
 
   changeCompleted(todo: Todo): void {
-    todo.completed = !todo.completed;
-    this.todoService.updateTodo(todo).subscribe();
-  }
-
-  save(): void {
-   this.todoService.updateTodo(this.todo)
-     .subscribe();
-   }
-
-  goBack(): void {
-    this.location.back();
+    this.changeCompletedListen.emit(todo);
   }
 
   upVote(todo: Todo): void {
-    todo.votes++;
-    this.todoService.updateTodo(todo).subscribe();
+    this.upVoteListen.emit(todo);
   }
 
   downVote(todo: Todo): void {
-    todo.votes--;
-    this.todoService.updateTodo(todo).subscribe();
+    this.downVoteListen.emit(todo);
   }
 
   delete(todo: Todo): void {
-    this.todoService.deleteTodo(todo).subscribe(_ => this.updateSource());
-    this.goBack();
+    this.deleteListen.emit(todo);
   }
-
-  ngOnInit(): void {
-    this.getTodo();
-  }
-
 }

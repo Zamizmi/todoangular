@@ -1,25 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from '../todo';
+import { Component, OnInit, Input } from '@angular/core';
+import { Todo } from '../todo.model';
 import { TodoService } from '../todo.service';
-import {MatTableDataSource} from '@angular/material';
-import {Observable} from 'rxjs/Observable';
+import { MatTableDataSource } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-todos',
+  providers: [ TodoService ],
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
+
 export class TodosComponent implements OnInit {
   todos : Todo[];
   dataSource : MatTableDataSource<Todo>;
-  displayedColumns = ['id', 'name', 'completed', 'votes','actions'];
 
-  constructor(private todoService: TodoService) {}
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
+  constructor(private todoService: TodoService) {
   }
 
   updateSource(): void {
@@ -31,6 +28,7 @@ export class TodosComponent implements OnInit {
     .subscribe(todos => {
       this.todos = todos;
       this.updateSource();
+
     });
   }
 
@@ -40,32 +38,33 @@ export class TodosComponent implements OnInit {
     this.todoService.addTodo({ name } as Todo)
     .subscribe(todo => {
       this.todos.push(todo);
-      this.updateSource();
+      this.getTodos();
     });
   }
 
   changeCompleted(todo: Todo): void {
     todo.completed = !todo.completed;
-    this.todoService.updateTodo(todo).subscribe();
+    this.todoService.updateTodo(todo).subscribe(_ =>this.getTodos());
   }
 
   upVote(todo: Todo): void {
     todo.votes++;
-    this.todoService.updateTodo(todo).subscribe();
+    this.todoService.updateTodo(todo).subscribe(_ =>this.getTodos());
   }
 
   downVote(todo: Todo): void {
     todo.votes--;
-    this.todoService.updateTodo(todo).subscribe();
+    this.todoService.updateTodo(todo).subscribe(_ =>this.getTodos());
   }
 
   delete(todo: Todo): void {
     this.todos = this.todos.filter(b => b !== todo);
-    this.todoService.deleteTodo(todo).subscribe(_ => this.updateSource());
+    this.todoService.deleteTodo(todo).subscribe(_ => this.getTodos());
   }
 
   ngOnInit() {
     this.getTodos();
+
   }
 
 }
