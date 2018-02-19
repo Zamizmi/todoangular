@@ -3,7 +3,7 @@ import { Todo } from '../todo.model';
 import { TodoService } from '../todo.service';
 import { MatTableDataSource } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-todos',
@@ -63,7 +63,6 @@ export class TodosComponent implements OnInit {
 
   ngOnInit() {
     this.getTodos();
-
   }
 
 }

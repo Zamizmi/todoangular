@@ -1,8 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http/';
+import { NgModule, } from '@angular/core';
 
 import { TodosComponent } from '../todos/todos.component';
 import { TodoDetailComponent } from '../todo-detail/todo-detail.component';
@@ -17,22 +14,14 @@ import { BoldDirective } from '../bold.directive';
     TodoDetailComponent
   ],
   imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpModule,
+    CommonModule,
     MaterialModule
   ],
+  providers: [TodoService],
   exports:[
-      TodosComponent,
-      BoldDirective
+      TodosComponent
   ]
 })
 
 export class TodoModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: TodoModule,
-      providers: [TodoService]
-    }
-  }
 }

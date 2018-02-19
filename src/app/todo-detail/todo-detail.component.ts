@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Todo } from '../todo.model';
-import {MaterialModule} from '../shared/MaterialModule';
+import { MaterialModule } from '../shared/MaterialModule';
 import { MatTableDataSource } from '@angular/material';
 
 //import { TodoService }  from '../todo.service';
