@@ -7,7 +7,6 @@ import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-todos',
-  providers: [ TodoService ],
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
